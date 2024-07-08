@@ -42,7 +42,6 @@ const generateId = () => {
 }
 
 app.get('/api/persons', (request, response, next) => {
-    console.log(response)
     Person.find({}).then(persons => {
         response.send(persons)        
     })
@@ -106,7 +105,6 @@ app.post('/api/persons', (request, response, next) => {
 })
 
 const errorHandler = (error, request, response, next) => {
-    console.error(error.message)
 
     if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformatted id' })
